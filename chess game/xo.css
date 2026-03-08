@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body{
+    background-color: antiquewhite;
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5px;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border:2px solid black;
+    cursor:pointer;
+   
+}
+#reset-btn{
+    background-color:rgb(166, 225, 188);
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px auto;
+    border-radius: 20px;;
+}
+#score{
+    font-size:20px ;
+    margin:20px auto ;
+}
+.cell{
+font-size:55px;
+border:2px solid black;
+width:99px;
+height: 99px;
+background-color: #dbdbd3;
+padding:15px;
+
+
+}
+
+#instuction{
+    font-size:25px;
+    color:#008000;
+}
