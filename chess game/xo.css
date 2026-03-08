@@ -17,6 +17,16 @@
     border:2px solid black;
    
 }
+#reset-btn{
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px auto;
+}
+#score{
+    font-size:20px ;
+    margin:20px auto ;
+}
 .cell{
 
 border:2px solid black;
@@ -24,4 +34,9 @@ width:99px;
 height: 99px;
 
 
+}
+
+#instuction{
+    font-size:25px;
+    color:#008000;
 }
