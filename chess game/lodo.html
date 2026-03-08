@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .board {
+            border: 2px solid;
+            width: 499px;
+            height: 496px;
+            margin:  auto;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .blue,
+        .green,
+        .red,
+        .yellow {
+            position: absolute;
+            border: 2px solid;
+            width: 155px;
+            height: 150px;
+        }
+
+        .centerbox {
+            position: absolute;
+
+            border: 2px solid;
+            width: 125px;
+            height: 125px;
+            top: 37%;
+            left: 37.5%;
+            border-radius: 20px;
+        }
+
+        .minibox {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ludo</h1>
+    <div class="board">
+
+
+        <div class="centerbox"></div>
+
+    </div>
+    <script>
+        let BOX=document.querySelector(".minibox");
+    let boxNo=[];
+for(let i=0;i<48;i++){
+    boxNo.push(i);}
+
+    let obj={};
+    for(let i=0;i<48;i++ ){
+     
+     obj[i]="";
+
+
+
+    }
+
+
+    let yellow=["yellow1","yellow2","yellow3","yellow4"];
+
+
+
+
+
+
+
+
+
+
+
+        let first1 = true;
+        let classNames = ["blue", "green", "red", "yellow"];
+        let topP = [-2, -2, 344, 344];
+        let leftP = [-2, 342, -2, 342];
+        let board = document.querySelector(".board");
+        //===============
+        //function for createing boxes
+        //===============
+        function ADDchild(classname, Top, Left) {
+            let box = document.createElement("div");
+            box.className = classname;
+            box.style.top = Top + "px";
+            box.style.left = Left + "px";
+            board.appendChild(box);
+            BOX=document.querySelector(".minibox");
+            
+        }
+        //===============
+        //itaration for adding 4 main boxes
+        //===============
+
+        for (let i = 0; i < 4; i++) {
+
+            ADDchild(classNames[i], topP[i], leftP[i]);
+        }
+        //===============
+        //MBPT=minibox position top &L=left
+        //===============
+        let MBPT = 311;
+        let MBPL = 228;
+        for (let i = 0; i < 16; i++) {
+            let box = "minibox";
+            ADDchild(box, MBPT, MBPL);
+            if (i < 3) MBPT += 37;
+            else if (i >= 3 && i < 7) {
+                if (first1 == true) {
+                    MBPT = 147.99;
+                    first1 = false;
+                }
+                else {
+                    MBPT -= 37;
+                }
+            }
+            else if (i >= 7 && i < 11) {
+                MBPT = 228;
+
+                if (first1 == false) {
+                    MBPL = 150;
+                    first1 = true;
+                }
+                else { MBPL -= 37; }
+            }
+            else if (i >= 11 && i < 16) {
+                
+
+                if (first1 == true) {
+                    MBPL = 425;
+                    first1 = false;
+                }
+                else { MBPL -= 37; }
+            }
+        }
+        let path = [
+            [150, 1, 38, 75, 112, 149],
+            [0, 154, 191, 228, 265, 303],
+            [150, 313, 350, 387, 424, 461,],
+            [306, 461, 424, 387, 350, 313],
+            [459, 303, 265, 228, 191, 154],
+            [306, 149, 112, 75, 38, 1]
+        ];
+        
+        
+        
+        
+        
+        
+        
+        
+        let path2 = [
+            [154, 111, 74, 37],
+            [305, 37, 74, 111],
+            [461, 189, 228, 267],
+            [305, 346, 383, 420],
+            [154, 420, 383, 346],
+            [1, 267, 228, 189],
+        ];
+        for (let i = 0; i < 6; i++) {
+            for (let j = 1; j < 6; j++) {
+            
+                ADDchild("minibox", path[i][0], path[i][j]);
+
+            }
+            for (let j = 1; j < 4; j++) {
+                ADDchild("minibox", path2[i][j], path2[i][0]);
+            }
+        }
+
+
+
+
+BOX.addEventListener("click", function () {
+
+
+
+
+
+});
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

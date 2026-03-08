@@ -1,0 +1,5233 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head >
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>chess game</title>
+<style>
+    
+  
+
+*{
+    -webkit-tap-highlight-color: transparent;
+    margin:0px;
+padding:0px;
+-webkit-user-select:none;
+align-items:center;
+justify-content:center;
+}
+.removedb1{
+color:black;
+font-size:40px;
+position:relative;
+width:10px;
+left:2px;
+}
+.removedb{
+color:blue;
+
+font-size:40px;
+position:relative;
+
+width:10px;
+left:2px;
+}
+
+#removedb{
+display:flex;
+border:2px solid;
+
+border-radius:30px;
+position:relative;
+top:1px;
+left:1px;
+width:auto;
+height:50px;
+background-color:gray;
+pointer-events:none;
+
+}
+#removedb1{
+display:flex;
+border:2px solid;
+border-radius:30px;
+position:relative;
+top:1px;
+left:1px;
+width:auto;
+height:50px;
+background-color:gray;
+pointer-events:none;
+}
+div{
+caret-color:transparent;
+}
+p{
+caret-color:transparent;
+}
+#conform{
+background-color:blue;
+color:white;
+
+font-size:10px;
+text-align:center;
+padding:3px;
+padding-right:5px;
+padding-left:3px;
+
+border:1px solid;
+border-radius:4px;
+position:relative;
+top:100px;
+left:100px;
+box-shadow:4px 4px 10px rgba(0,0,0,0,4);
+
+}
+
+#conform1{
+background-color:blue;
+color:white;
+
+font-size:10px;
+text-align:center;
+padding:3px;
+padding-right:5px;
+padding-left:3px;
+
+border:1px solid;
+border-radius:4px;
+position:relative;
+top:100px;
+left:100px;
+box-shadow:4px 4px 10px rgba(0,0,0,0,4);
+
+}
+
+input{
+width:10px;
+height:10px;
+margin:15px;
+}
+.lable1{color:white;
+cursor:pointer;
+font-size:10px;
+width:10px;
+height:10px;
+margin:10px;
+padding:10px;
+
+}
+.lable2{color:white;
+cursor:pointer;
+font-size:10px;
+width:10px;
+height:10px;
+margin:10px;
+padding:10px;
+
+
+}
+
+.popup2{
+position:relative;
+top:50px;
+left:30px;
+
+width:200px;
+height:100px;
+border:1px solid;
+
+display:flex;
+flex-wrap:wrap;
+
+border-radius:5px;
+}
+.popup3{
+position:relative;
+top:50px;
+left:30px;
+
+width:200px;
+height:100px;
+border:1px solid;
+
+display:flex;
+flex-wrap:wrap;
+
+border-radius:5px;
+}
+#popup{
+background-color:#C0C0C0;
+border-radius:5px;
+padding:15px;
+padding-right:30px;
+margin:0px;
+display:none;
+align-items:center;
+justify-content:center;
+position:fixed;
+top:150px;
+left:80px;
+
+z-index:99;
+width:250px;
+height:250px;
+border:2px solid;
+}
+#popup1{
+background-color:#C0C0C0;
+border-radius:5px;
+padding:15px;
+padding-right:30px;
+margin:0px;
+display:none;
+align-items:center;
+justify-content:center;
+position:fixed;
+top:150px;
+left:80px;
+
+z-index:999;
+width:250px;
+height:250px;
+border:2px solid;
+}
+
+
+
+
+#moving{
+color:blue;
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+}
+
+#moving1{
+color:black;
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+}
+
+
+img{
+font-size:100px;
+position:relative;
+bottom:-12px;
+right:50%px;
+width:150px;
+height:150px;
+}
+
+
+.wpon0{
+color:blue;
+
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:5px;
+border-radius:10px;
+
+}
+.wpon1{
+color:black;
+
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:5px;
+border-radius:10px;;
+
+}
+
+
+body{
+
+align-items:center;
+
+justify-content:center;
+
+position:absolute;
+}
+
+.board{
+position:relative;
+z-index:1;
+top:0px;
+
+
+
+display:flex;
+flex-wrap:wrap;
+width:500px;
+height:500px;
+justify-content:center;
+align-items:center;
+border:8px solid;
+border-radius:15px;
+border-color:brown;
+cursor:pointer;
+}
+
+.blackbox{
+background-color:gray;
+width:60.5px;
+height:60px;
+border:1px solid;
+border-color:gray;
+}
+
+
+
+.whitebox{
+border:1px solid;
+border-color:blue;
+background-color:white;
+width:60.5px;
+height:60px;
+}
+.rock0{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:3px;
+padding-left:5px;
+border-radius:10px;
+
+color:blue;
+
+
+}
+.rock1{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:5px;
+border-radius:10px;
+
+color:black;
+
+
+}
+#rmi{
+position:relative;
+bottom:6px;
+border:1px solid;
+border-radius:10px;
+left:0px;
+font-size:55px;
+background-color:green;
+padding-left:1px;
+color:blue;
+
+/*overflow:hidden;*/
+}
+#rmi1{
+position:relative;
+bottom:6px;
+border:0px solid;
+border-radius:10px;
+left:0px;
+font-size:55px;
+background-color:green;
+padding-left:1px;
+color:black;
+}
+
+.queen0{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+
+
+color:blue;
+}
+.queen1{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+
+
+color:black;
+}
+
+.king0{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+
+color:blue;
+
+
+}
+.king1{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+color:black;
+
+
+}
+
+.bishap0{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+
+color:blue;
+
+}
+.bishap1{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+color:black;
+
+}
+
+.knight0{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+color:blue;
+
+}
+.knight1{
+font-size:50px;
+position:relative;
+bottom:1px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+
+color:black;
+
+}
+
+
+
+#queenmov{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;background-color:green;
+
+color:blue;
+
+
+}
+
+#queenmov1{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+
+color:black;
+
+
+}
+
+
+#bishapmov{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+
+color:blue;
+
+
+}
+
+#bishapmov1{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+color:black;
+
+
+}
+
+
+
+#knightmov{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+color:blue;
+
+
+}
+
+#knightmov1{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+color:black;
+
+
+}
+
+
+#kingmov{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+color:blue;
+
+
+}
+
+#kingmov1{
+font-size:51px;
+position:relative;
+bottom:3px;
+left:1px;
+padding-left:2px;
+border-radius:10px;
+background-color:green;
+
+color:black;
+
+
+}
+
+
+
+</style></head>
+
+<body>
+<div id="popup"><div class="popup2">
+<div><p class="lable1">Rook  ♖  ⬇</p>
+<input type="radio" name="content" id="rook"value="rook"></div>
+<br><div>
+<p class="lable1">knight ♘⬇</p>
+
+<input type="radio" name="content" id="knight0"value="knight0">
+
+</div>
+<br><div>
+
+<p class="lable1">bishop  ♗⬇</p>
+
+<input type="radio" name="content" id="bishop"value="bishop">
+</div>
+<br><div>
+
+<p class="lable1">Queen  ♕⬇</p>
+
+<input type="radio" name="content" id="queen0" value="queen0"></div><br>
+</div>
+
+<button id="conform">OK</button>
+
+
+</div>
+<div id="popup1"><div class="popup3">
+<div><p class="lable2">Rook  ♖  ⬇</p>
+<input type="radio" name="content1" id="rook1"value="rook1"></div>
+<br><div>
+<p class="lable2">knight ♘⬇</p>
+
+<input type="radio" name="content1" id="knight1"value="knight1">
+
+</div>
+<br><div>
+
+<p class="lable2">bishop  ♗⬇</p>
+
+<input type="radio" name="content1" id="bishop1"value="bishop1">
+</div>
+<br><div>
+
+<p class="lable2">Queen  ♕⬇</p>
+
+<input type="radio" name="content1" id="queen1" value="queen1"></div><br>
+</div>
+
+<button id="conform1">OK</button>
+
+
+</div>
+<div id="removedb1">
+</div>
+
+
+<div class="board" id="board1">
+<div class="whitebox" id="1"><p class="rock0">♖</p>
+</div>
+<div class="blackbox" id="2"><p class="knight0">♘</p></div>
+<div class="whitebox" id="3"><p class="bishap0">♗</p>
+</div>
+<div class="blackbox" id="4"><p class="king0">♔</p></div>
+<div class="whitebox" id="5"><p class="queen0">♕</p></div>
+<div class="blackbox" id="6"><p class="bishap0">♗</p>
+</div>
+<div class="whitebox" id="7"><p class="knight0">♘</p></div>
+<div class="blackbox" id="8"><p class="rock0">♖</p></div>
+<div class="blackbox" id="9"><p class="wpon0">♙</p>
+
+</div>
+<div class="whitebox" id="10"><p class="wpon0">♙</p>
+</div>
+<div class="blackbox" id="11"><p class="wpon0">♙
+</p>
+</div>
+<div class="whitebox" id="12"><p class="wpon0">♙
+</p>
+</div>
+<div class="blackbox" id="13"><p class="wpon0">♙
+</p>
+</div>
+<div class="whitebox" id="14"><p class="wpon0">♙
+</p>
+</div>
+<div class="blackbox" id="15"><p class="wpon0">♙
+</p>
+</div>
+<div class="whitebox" id="16"><p class="wpon0">♙
+</p>
+</div>
+<div class="whitebox" id="17"></div>
+<div class="blackbox" id="18"></div>
+<div class="whitebox" id="19"></div>
+<div class="blackbox" id="20"></div>
+<div class="whitebox" id="21"></div>
+<div class="blackbox" id="22"></div>
+<div class="whitebox" id="23"></div>
+<div class="blackbox" id="24"></div>
+<div class="blackbox" id="25"></div>
+<div class="whitebox" id="26"></div>
+<div class="blackbox" id="27"></div>
+<div class="whitebox" id="28"></div>
+<div class="blackbox" id="29"></div>
+<div class="whitebox" id="30"></div>
+<div class="blackbox" id="31"></div>
+<div class="whitebox" id="32"></div>
+<div class="whitebox" id="33"></div>
+<div class="blackbox" id="34"></div>
+<div class="whitebox" id="35"></div>
+<div class="blackbox" id="36"></div>
+<div class="whitebox" id="37"></div>
+<div class="blackbox" id="38"></div>
+<div class="whitebox" id="39"></div>
+<div class="blackbox" id="40"></div>
+<div class="blackbox" id="41"></div>
+<div class="whitebox" id="42"></div>
+<div class="blackbox" id="43"></div>
+<div class="whitebox" id="44"></div>
+<div class="blackbox" id="45"></div>
+<div class="whitebox" id="46"></div>
+<div class="blackbox" id="47"></div>
+<div class="whitebox" id="48"></div>
+<div class="whitebox" id="49"><p class="wpon1">♟
+</p>
+</div>
+<div class="blackbox" id="50"><p class="wpon1">♟
+</p>
+</div>
+<div class="whitebox" id="51"><p class="wpon1">♟
+</p>
+</div>
+<div class="blackbox" id="52"><p class="wpon1">♟
+</p>
+</div>
+<div class="whitebox" id="53"><p class="wpon1">♟
+</p>
+</div>
+<div class="blackbox" id="54"><p class="wpon1">♟
+</p>
+</div>
+<div class="whitebox" id="55"><p class="wpon1">♟
+</p>
+</div>
+<div class="blackbox" id="56"><p class="wpon1">♟
+</p>
+</div>
+<div class="blackbox" id="57"><p class="rock1">♜</p>
+</div>
+
+<div class="whitebox" id="58"><p class="knight1">♞</p>
+</div>
+<div class="blackbox" id="59"><p class="bishap1">♝</p>
+
+</div>
+<div class="whitebox" id="60"><p class="king1">♚</p>
+</div>
+<div class="blackbox" id="61"><p class="queen1">♛</p>
+</div>
+<div class="whitebox" id="62"><p class="bishap1">♝</p>
+</div>
+<div class="blackbox" id="63"><p class="knight1">♞</p>
+</div>
+<div class="whitebox" id="64"><p class="rock1">♜</p>
+</div>
+</div>
+</div>
+<div id="removedb">
+</div>
+
+<script>
+let checkenemy=[];
+function bishopenemy(){
+document.getElementById(checkenemy[0]).children[0].id="enemy";
+let enemy=document.getElementById("enemy");
+
+let removedb=document.getElementById("removedb");
+removedb.appendChild(enemy);
+enemy.id="";
+
+}
+function bishopenemy1(){
+document.getElementById(checkenemy[0]).children[0].id="enemy";
+let enemy=document.getElementById("enemy");
+
+let removedb=document.getElementById("removedb1");
+removedb.appendChild(enemy);
+enemy.id="";
+}
+
+let left=[1,9,17,25,33,41,49,57];
+let right=[8,16,24,32,40,48,56,64];
+let white=[true];
+let black=[false];
+let wantedPieces=document.getElementsByName("content");
+
+
+let wantedPiece1s=document.getElementsByName("content1");
+
+let idcollection=[];
+let rmoving=[0,8,16,24,32,40,48,56,64];
+
+function  promotion(){
+
+for(let wantedPiece of wantedPieces){
+if(wantedPiece.checked){let a=wantedPiece.value;
+if(a=="rook"){
+let newrook=document.createElement("p");
+newrook.className="rock0";
+newrook.innerHTML="♖";
+document.getElementById(idcollection[0]).appendChild(newrook);
+document.getElementById("moving").remove();
+document.getElementById("popup").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+
+
+}
+
+else if(a=="knight0"){
+let newknight=document.createElement("p");
+newknight.className="knight0";
+newknight.innerHTML="♘";
+document.getElementById(idcollection[0]).appendChild(newknight);
+document.getElementById("moving").remove();
+document.getElementById("popup").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+
+
+}
+else if(a=="bishop"){
+let newbishop=document.createElement("p");
+newbishop.className="bishap0";
+newbishop.innerHTML="♗";
+document.getElementById(idcollection[0]).appendChild(newbishop);
+document.getElementById("moving").remove();
+document.getElementById("popup").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+
+
+}
+
+
+
+
+
+
+
+
+
+
+else if(a=="queen0"){
+let newrook=document.createElement("p");
+newrook.className="queen0";
+newrook.innerHTML="♕";
+document.getElementById(idcollection[0]).appendChild(newrook);
+document.getElementById("moving").remove();
+document.getElementById("popup").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+}}}} 
+let conformbtn=document.getElementById("conform");
+conformbtn.addEventListener("click",()=>{
+promotion();
+rookfun();
+queenfun();
+bishapfun();
+knightfun();
+
+});
+function  promotion1(){
+
+for(let wantedPiece of wantedPiece1s){
+if(wantedPiece.checked){let a=wantedPiece.value;
+if(a=="rook1"){
+let newrook=document.createElement("p");
+newrook.className="rock1";
+newrook.innerHTML="♜";
+document.getElementById(idcollection[0]).appendChild(newrook);
+document.getElementById("moving1").remove();
+document.getElementById("popup1").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+
+
+}
+
+else if(a=="knight1"){
+let newknight=document.createElement("p");
+newknight.className="knight1";
+newknight.innerHTML="♞";
+document.getElementById(idcollection[0]).appendChild(newknight);
+document.getElementById("moving1").remove();
+document.getElementById("popup1").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+
+
+}
+else if(a=="bishop1"){
+let newbishop=document.createElement("p");
+newbishop.className="bishap1";
+newbishop.innerHTML="♝";
+document.getElementById(idcollection[0]).appendChild(newbishop);
+document.getElementById("moving1").remove();
+document.getElementById("popup1").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+
+
+}
+
+
+
+
+
+
+
+
+
+
+else if(a=="queen1"){
+let newrook=document.createElement("p");
+newrook.className="queen1";
+newrook.innerHTML="♛";
+document.getElementById(idcollection[0]).appendChild(newrook);
+document.getElementById("moving1").remove();
+document.getElementById("popup1").style.display="none";
+document.getElementById("board1").style.display="flex";
+idcollection=[];
+}}}} 
+let conformbtn1=document.getElementById("conform1");
+conformbtn1.addEventListener("click",()=>{
+promotion1();
+rookfun1();
+queenfun1();
+bishapfun1();
+knightfun1();
+
+});
+
+let rm=false;
+let boxs=document.querySelectorAll(".whitebox, .blackbox");
+let whiteboxs=document.querySelectorAll(".whitebox");
+let blackboxs=document.querySelectorAll(".blackbox");
+let wpons=document.querySelectorAll(".wpon0");
+let wpon1s=document.querySelectorAll(".wpon1");
+
+whiteboxs.forEach((whitebox)=>{
+          whitebox.addEventListener("click",(e)=>{
+                      });
+});
+
+blackboxs.forEach((blackbox)=>{
+	blackbox.addEventListener("click",(e)=>{
+		});
+});
+function removingpiece1(){
+let removedb=document.getElementById("removedb1");
+document.getElementById("remo1").className="removedb1";
+
+removedb1.appendChild(document.getElementById("remo1"));
+let remo1=document.getElementById("remo1");
+remo1.id="";
+
+}
+
+
+function removingpiece(){
+let removedb=document.getElementById("removedb");
+document.getElementById("remo").className="removedb";
+
+removedb.appendChild(document.getElementById("remo"));
+let remo=document.getElementById("remo");
+remo.id="";
+
+}
+
+
+
+
+boxs.forEach((box)=>{
+          box.addEventListener("click",(e)=>{
+
+
+
+try{
+let kingmov=document.getElementById("kingmov");
+let stopingleft=[1,9,17,25,33,41,49,57];
+let stopingright=[8,16,24,32,40,48,56,64];
+
+if(kingmov){
+function O1(){
+let idname=parseInt(kingmov.closest("div").id)+1;
+if(idname>64){
+return;}
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+
+}
+
+}
+
+function O2(){
+let idname=parseInt(kingmov.closest("div").id)-1;
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if(idname<1){
+return;}
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+function O3(){
+let idname=parseInt(kingmov.closest("div").id)-8;
+let enemy=document.getElementById(String(idname));
+if(idname<1){
+return;}
+
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+
+function O4(){
+let idname=parseInt(kingmov.closest("div").id)+8;
+if(idname>64){
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+
+function O5(){
+let idname=parseInt(kingmov.closest("div").id)-7;
+if(idname<1){
+return;}
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+
+
+function O6(){
+let idname=parseInt(kingmov.closest("div").id)+7;
+if(idname>64){
+return;}
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+
+function O7(){
+let idname=parseInt(kingmov.closest("div").id)-9;
+if(idname<1){
+return;}
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+
+function O8(){
+let idname=parseInt(kingmov.closest("div").id)+9;
+if(idname>64){
+return;}
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("1");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+}
+
+
+O1();
+O2();
+O3();
+O4();
+O5();
+O6();
+O7();
+O8();
+}
+
+
+
+
+
+if(e.target.innerHTML.trim()===""&&kingmov){
+
+
+let stopingleftv;
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+stopingleftv=false;
+}
+else{
+stopingleftv=true;
+
+}
+
+
+let stopingrightv;
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+stopingrightv=false;
+}
+else{
+stopingrightv=true;
+
+
+
+}
+
+if(parseInt(e.target.id)==(parseInt(kingmov.closest("div").id)+8)&&((parseInt(kingmov.closest("div").id)+8)<=64)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-8)&&((parseInt(kingmov.closest("div").id)-8)>=1)){
+e.target.appendChild(kingmov);
+
+    kingmov.style.backgroundColor="transparent";
+
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+
+}
+if(((parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-7)&&((parseInt(kingmov.closest("div").id)-7)>=1)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)+9)&&((parseInt(kingmov.closest("div").id)+9)<=64)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)+1)&&((parseInt(kingmov.closest("div").id)+1)<=64))&&stopingrightv){
+
+
+e.target.appendChild(kingmov);
+
+    kingmov.style.backgroundColor="transparent";
+
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+
+if(((parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-9)&&((parseInt(kingmov.closest("div").id)-9)>=1)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)
++7)&&((parseInt(kingmov.closest("div").id)+7)<=64)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-1)&&((parseInt(kingmov.closest("div").id)-1)>=1))&&stopingleftv){
+
+
+e.target.appendChild(kingmov);
+
+    kingmov.style.backgroundColor="transparent";
+
+kingmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+
+}
+
+
+}
+}
+catch{}
+
+
+
+
+/*start rook function*/
+
+
+
+/*start black king*/
+
+try{
+let kingmov=document.getElementById("kingmov1");
+let stopingleft=[1,9,17,25,33,41,49,57];
+let stopingright=[8,16,24,32,40,48,56,64];
+if(kingmov){
+function O1(){
+let idname=parseInt(kingmov.closest("div").id)+1;
+if(idname>64){
+return;}
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+
+}
+
+}
+
+function O2(){
+let idname=parseInt(kingmov.closest("div").id)-1;
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if(idname<1){
+return;}
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+function O3(){
+let idname=parseInt(kingmov.closest("div").id)-8;
+let enemy=document.getElementById(String(idname));
+if(idname<1){
+return;}
+
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+
+function O4(){
+let idname=parseInt(kingmov.closest("div").id)+8;
+if(idname>64){
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+
+function O5(){
+let idname=parseInt(kingmov.closest("div").id)-7;
+if(idname<1){
+return;}
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+
+
+function O6(){
+let idname=parseInt(kingmov.closest("div").id)+7;
+if(idname>64){
+return;}
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+
+function O7(){
+let idname=parseInt(kingmov.closest("div").id)-9;
+if(idname<1){
+return;}
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+
+function O8(){
+let idname=parseInt(kingmov.closest("div").id)+9;
+if(idname>64){
+return;}
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+
+return;
+}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkenemy1=enemyC?.className.includes("0");
+if( enemy.innerHTML.trim()!==""&& checkenemy1&&parseInt(e.target.closest("div").id)==idname){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(kingmov);
+kingmov.style.backgroundColor="transparent";
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+}
+
+
+O1();
+O2();
+O3();
+O4();
+O5();
+O6();
+O7();
+O8();
+}
+
+if(e.target.innerHTML.trim()===""&&kingmov){
+
+
+let stopingleftv;
+if(stopingleft.includes(parseInt(kingmov.closest("div").id))){
+stopingleftv=false;
+}
+else{
+stopingleftv=true;
+
+}
+
+
+let stopingrightv;
+if(stopingright.includes(parseInt(kingmov.closest("div").id))){
+stopingrightv=false;
+}
+else{
+stopingrightv=true;
+
+
+
+}
+
+if(parseInt(e.target.id)==(parseInt(kingmov.closest("div").id)+8)&&((parseInt(kingmov.closest("div").id)+8)<=64)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-8)&&((parseInt(kingmov.closest("div").id)-8)>=1)){
+e.target.appendChild(kingmov);
+
+    kingmov.style.backgroundColor="transparent";
+
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+if(((parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-7)&&((parseInt(kingmov.closest("div").id)-7)>=1)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)+9)&&((parseInt(kingmov.closest("div").id)+9)<=64)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)+1)&&((parseInt(kingmov.closest("div").id)+1)<=64))&&stopingrightv){
+
+
+e.target.appendChild(kingmov);
+
+    kingmov.style.backgroundColor="transparent";
+
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+
+if(((parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-9)&&((parseInt(kingmov.closest("div").id)-9)>=1)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)
++7)&&((parseInt(kingmov.closest("div").id)+7)<=64)||(parseInt(e.target.id)==parseInt(kingmov.closest("div").id)-1)&&((parseInt(kingmov.closest("div").id)-1)>=1))&&stopingleftv){
+
+
+e.target.appendChild(kingmov);
+
+    kingmov.style.backgroundColor="transparent";
+
+kingmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+}
+
+
+}
+}
+catch{}
+
+
+
+/*complete black king*/
+
+
+
+
+
+
+
+	     try{
+let availablemovl;
+let availablemovr;
+
+	           let moving=document.getElementById("moving");
+if(left.includes(parseInt(moving.closest("div").id))){
+availablemovl=true;
+}
+else{
+
+availablemovl=false;
+
+}
+if(right.includes(parseInt(moving.closest("div").id))){
+availablemovr=true;
+}
+else{
+availablemovr=false;
+
+}
+
+/*right corner*/
+
+let baseDiv = moving.closest("div");
+let targetId = parseInt(baseDiv.id, 10) + 9;
+let targett = document.getElementById(String(targetId));
+let firstChild = targett?.children[0];
+let hasClass1 = firstChild?.className.includes("1");
+if(firstChild?.className.includes("king1")){
+firstChild.style.backgroundColor="red";
+}
+/*left corner*/
+let baseDivl = moving.closest("div");
+let targetIdl= parseInt(baseDivl.id, 10) + 7;
+let targettl = document.getElementById(String(targetIdl));
+let firstChildl = targettl?.children[0];
+let hasClass1l = firstChildl?.className.includes("1");
+
+	            let avm=(parseInt(e.target.id)===(parseInt(moving.closest("div").id))+8);
+	           let avm1=((parseInt(moving.closest("div").id))>=9 )&& ((parseInt(moving.closest("div").id))<=16 )&&((parseInt(e.target.id)===(parseInt(moving.closest("div").id))+16));
+        if(e.target.innerHTML.trim()===""&&(avm||avm1)||hasClass1&&(parseInt(e.target.closest("div").id)===(parseInt(moving.closest("div").id))+9)||hasClass1l&&(parseInt(e.target.closest("div").id)===(parseInt(moving.closest("div").id))+7)){
+	if(document.getElementById(String(parseInt(moving.closest("div").id)+8)).innerHTML.trim()!==""&&(e.target==document.getElementById(String(parseInt(moving.closest("div").id)+8))||e.target==document.getElementById(String(parseInt(moving.closest("div").id)+16)))){
+return;}  
+
+
+ if((e.target.closest("div").id>=57&&e.target.closest("div").id<=64)){
+
+if(hasClass1&&(parseInt(e.target.closest("div").id)===(parseInt(moving.closest("div").id))+9)){
+if(availablemovr){
+return;
+}
+
+ firstChild.id="remo1";
+removingpiece1();
+ targett.appendChild(moving); 
+idcollection.splice(0,1,targett.closest("div").id);
+
+}
+if(hasClass1l&&(parseInt(e.target.closest("div").id)===(parseInt(moving.closest("div").id))+7)){
+if(availablemovl){
+return;
+}
+
+ firstChildl.id="remo1";
+removingpiece1();
+ targettl.appendChild(moving);
+idcollection.splice(0,1,targettl.closest("div").id);
+
+}
+
+
+
+                       document.getElementById("popup").style.display="block";
+  document.getElementById("board1").style.display="none";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;                       
+}
+	           else{
+if(hasClass1&&(parseInt(e.target.closest("div").id)===(parseInt(moving.closest("div").id))+9)){
+if(availablemovr){
+return;
+}
+ firstChild.id="remo1";
+
+removingpiece1();
+ targett.appendChild(moving);
+
+baseDiv = moving.closest("div");
+targetId = parseInt(baseDiv.id, 10) + 9;
+ targett = document.getElementById(String(targetId));
+firstChild = targett?.children[0];
+ hasClass1 = firstChild?.className.includes("1");
+if(firstChild?.className.includes("king1")){
+firstChild.style.backgroundColor="red";
+}
+baseDivl = moving.closest("div");
+targetIdl = parseInt(baseDivl.id, 10) +7;
+ targettl = document.getElementById(String(targetIdl));
+firstChildl = targettl?.children[0];
+ if(firstChildl?.className.includes("king1")){
+firstChildl.style.backgroundColor="red";
+}
+
+moving.id="";
+black.splice(0,0,true);
+white.splice(0,1,false);
+return;
+
+}
+if(hasClass1l&&(parseInt(e.target.closest("div").id)===(parseInt(moving.closest("div").id))+7)){
+if(availablemovl){
+return;
+}
+
+ firstChildl.id="remo1";
+
+removingpiece1();
+ targettl.appendChild(moving);
+
+baseDiv = moving.closest("div");
+targetId = parseInt(baseDiv.id, 10) + 9;
+ targett = document.getElementById(String(targetId));
+firstChild = targett?.children[0];
+ hasClass1 = firstChild?.className.includes("1");
+if(firstChild?.className.includes("king1")){
+firstChild.style.backgroundColor="red";
+}
+baseDivl = moving.closest("div");
+targetIdl = parseInt(baseDivl.id, 10) +7;
+ targettl = document.getElementById(String(targetIdl));
+firstChildl = targettl?.children[0];
+ if(firstChildl?.className.includes("king1")){
+firstChildl.style.backgroundColor="red";
+}
+
+
+moving.id="";
+black.splice(0,0,true);
+white.splice(0,1,false);
+return;
+
+}
+
+black.splice(0,1,true);
+white.splice(0,1,false);
+e.target.closest("div")
+.appendChild(moving);
+baseDiv = moving.closest("div");
+targetId = parseInt(baseDiv.id, 10) + 9;
+ targett = document.getElementById(String(targetId));
+firstChild = targett?.children[0];
+ hasClass1 = firstChild?.className.includes("1");
+if(firstChild?.className.includes("king1")){
+firstChild.style.backgroundColor="red";
+}
+baseDivl = moving.closest("div");
+targetIdl = parseInt(baseDivl.id, 10) +7;
+ targettl = document.getElementById(String(targetIdl));
+firstChildl = targettl?.children[0];
+ if(firstChildl?.className.includes("king1")){
+firstChildl.style.backgroundColor="red";
+}
+
+
+
+moving.id="";
+}
+	         }
+	   }
+	    catch{
+                     try{
+                          let rmi=document.getElementById("rmi");
+
+let stopingleft=[1,17,25,33,41,49,57];
+let stopingrback=[8,16,24,32,40,48,56,64];
+if(rmi){
+for(let r=1;r<=8;r++){
+let idname=parseInt(rmi.closest("div").id)-(8*r);
+if(idname<1){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<=8;r++){
+let idname=parseInt(rmi.closest("div").id)+(8*r);
+if(idname>64){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(rmi.closest("div").id)-r;
+if(idname<1){
+break;}
+if(stopingleft.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(rmi.closest("div").id)+r;
+if(idname>64){
+break;}
+if(stopingrback.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+
+
+}
+
+
+
+
+
+                          if(e.target.innerHTML.trim()===""&&rmi){
+                             rm=true;
+                          for(let i=0,j=1;i<9;i++,j++){
+                           if(rmoving[i]<parseInt(e.target.closest("div").id) && parseInt(e.target.closest("div").id)<=rmoving[j] &&rmoving[i]<parseInt(rmi.closest("div").id) && parseInt(rmi.closest("div").id) <=rmoving[j]){
+if(parseInt(e.target.id)<parseInt(rmi.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(rmi.closest("div").id)-k)<=rmoving[i]){
+break;
+}
+if(document.getElementById(String(parseInt(rmi.closest("div").id)-k)).innerHTML.trim()!==""&&parseInt(rmi.closest("div").id)-k>parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(rmi);
+                          rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+                          return;
+}
+if(parseInt(e.target.id)>parseInt(rmi.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(rmi.closest("div").id)+k)>=rmoving[j]){
+break;
+}
+if(document.getElementById(String(parseInt(rmi.closest("div").id)+k)).innerHTML.trim()!==""&&parseInt(rmi.closest("div").id)+k<parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(rmi);
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+                          rmi.id="";
+                          return;
+} }
+                      else {
+                       for(let h=1;h<8;h++){
+                       if(parseInt(rmi.closest("div").id)-(8*h)===parseInt(e.target.id)||parseInt(rmi.closest("div").id)+(8*h)===parseInt(e.target.id)){
+                      if(parseInt(e.target.id)<parseInt(rmi.closest("div").id)){
+
+                for(let k=1;k<8;k++){
+if(parseInt(rmi.closest("div").id)-(8*k)<1){
+break;
+}
+else{
+if(document.getElementById(String(parseInt(rmi.closest("div").id)-(8*k))).innerHTML.trim()!==""){
+if(e.target.id<parseInt(rmi.closest("div").id)-(8*k)){
+                return;
+                }}
+}}
+
+e.target.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+break;
+
+}
+                else if(parseInt(e.target.id)>parseInt(rmi.closest("div").id)){ 
+for(let m=1;m<8;m++){
+if(parseInt(rmi.closest("div").id)+(8*m)>64){
+}
+else{
+if(document.getElementById(String(parseInt(rmi.closest("div").id)+(8*m))).innerHTML.trim()!==""){
+if(e.target.id>parseInt(rmi.closest("div").id)+(8*m)){
+                return;
+                }}
+}}
+e.target.appendChild(rmi);
+
+rmi.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+
+else{}
+} 
+
+} } } } }
+catch{
+
+
+
+
+}
+}
+
+ try{
+
+                          let queenmov=document.getElementById("queenmov");
+let stopingleft=[1,17,25,33,41,49,57];
+let stopinglback=[17,25,33,41,49,57];
+let stopingright=[64,8,16,24,32,40,48,56];
+let stopingrback=[8,16,24,32,40,48,56,64];
+if(queenmov){
+for(let r=1;r<=8;r++){
+let idname=parseInt(queenmov.closest("div").id)-(8*r);
+if(idname<1){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<=8;r++){
+let idname=parseInt(queenmov.closest("div").id)+(8*r);
+if(idname>64){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(queenmov.closest("div").id)-r;
+if(idname<1){
+break;}
+if(stopingleft.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(queenmov.closest("div").id)+r;
+if(idname>64){
+break;}
+if(stopingrback.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("1");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;}
+break;}}
+
+
+
+
+
+
+}
+
+
+if(queenmov){
+
+for(let r=1;r<=8;r++){
+
+ 
+
+let crossmov1=parseInt(queenmov.closest("div").id)+(7*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+console.log("error1");
+
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}break;
+
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)-(7*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)-(9*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+break;
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)+(9*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+
+
+}
+
+                          
+                          if(e.target.innerHTML.trim()===""&&queenmov){
+
+                                                       for(let i=0,j=1;i<9;i++,j++){
+                           if(rmoving[i]<parseInt(e.target.closest("div").id) && parseInt(e.target.closest("div").id)<=rmoving[j] &&rmoving[i]<parseInt(queenmov.closest("div").id) && parseInt(queenmov.closest("div").id) <=rmoving[j]){
+if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(queenmov.closest("div").id)-k)<=rmoving[i]){
+break;
+}
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)-k)).innerHTML.trim()!==""&&parseInt(queenmov.closest("div").id)-k>parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(queenmov);
+                          queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+                          return;
+}
+if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(queenmov.closest("div").id)+k)>=rmoving[j]){
+break;
+}
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)+k)).innerHTML.trim()!==""&&parseInt(queenmov.closest("div").id)+k<parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(queenmov);
+                          queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+                          return;
+} }
+                      else {
+                       for(let h=1;h<8;h++){
+                       if(parseInt(queenmov.closest("div").id)-(8*h)===parseInt(e.target.id)||parseInt(queenmov.closest("div").id)+(8*h)===parseInt(e.target.id)){
+                      if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+
+                for(let k=1;k<8;k++){
+if(parseInt(queenmov.closest("div").id)-(8*k)<1){
+break;
+}
+else{
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)-(8*k))).innerHTML.trim()!==""){
+if(e.target.id<parseInt(queenmov.closest("div").id)-(8*k)){
+                return;
+                }}
+}}
+
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+                else if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){ 
+for(let m=1;m<8;m++){
+if(parseInt(queenmov.closest("div").id)+(8*m)>64){
+}
+else{
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)+(8*m))).innerHTML.trim()!==""){
+if(e.target.id>parseInt(queenmov.closest("div").id)+(8*m)){
+                return;
+                }}
+}}
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+
+else{}
+} 
+
+} } }
+
+
+
+
+/*let stopingleft=[1,17,25,33,41,49,57];
+let stopinglback=[17,25,33,41,49,57];
+let stopingright=[64,8,16,24,32,40,48,56];
+let stopingrback=[8,16,24,32,40,48,56,64];*/
+if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)+(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingleft.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)+(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopingleft.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)-(9*k));
+}
+
+if(availablemov.includes(parseInt(e.target.id))){
+
+let checkcorner;
+if(stopinglback.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)-(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopinglback.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)+(9*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingright.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)+(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopingright.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)-(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingrback.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)-(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopingrback.includes(crossmov)){
+break;
+}
+}}}
+ } }
+catch{}
+
+
+
+/*white bishop*/
+
+
+
+
+try{
+let bishapmov=document.getElementById("bishapmov");
+let stopingleft=[1,17,25,33,41,49,57];
+let stopinglback=[17,25,33,41,49,57];
+let stopingright=[64,8,16,24,32,40,48,56];
+let stopingrback=[8,16,24,32,40,48,56,64];
+if(bishapmov){
+
+for(let r=1;r<=8;r++){
+
+ 
+
+let crossmov1=parseInt(bishapmov.closest("div").id)+(7*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+console.log("error1");
+
+if(parseInt(e.target.closest("div").id)===crossmov1){
+checkenemy.splice(0,1,String(crossmov1));
+bishopenemy1();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}break;
+
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(bishapmov.closest("div").id)-(7*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(bishapmov.closest("div").id)-(9*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+break;
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(bishapmov.closest("div").id)+(9*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("1");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy1();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+
+
+}
+
+                          if(e.target.innerHTML.trim()===""&&bishapmov){
+
+
+if(parseInt(e.target.id)>parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)+(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingleft.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)+(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopingleft.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)-(9*k));
+}
+
+if(availablemov.includes(parseInt(e.target.id))){
+
+let checkcorner;
+if(stopinglback.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)-(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopinglback.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)>parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)+(9*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingright.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)+(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopingright.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)-(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingrback.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)-(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+}
+if(stopingrback.includes(crossmov)){
+break;
+}
+}}}
+ } }
+catch{}
+
+
+
+
+
+
+
+
+
+
+
+try{
+let knightmov=document.getElementById("knightmov");
+let stopingl1=[1,9,17,25,33,41,49,57,2,10,18,26,34,42,50,58];
+let stopingl2=[1,9,17,25,33,41,49,57];
+let stopingr1=[8,16,24,32,40,48,56,64,7,15,23,31,39,47,55,63];
+let stopingr2=[8,16,24,32,40,48,56,64];
+
+if(knightmov){
+function fun1(){
+let idname=parseInt(knightmov.closest("div").id)-10;
+if(idname<1){
+return;
+}
+if(stopingl1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+
+function fun2(){
+let idname=parseInt(knightmov.closest("div").id)+10;
+if(idname>64){
+return;
+}
+if(stopingr1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+function fun3(){
+let idname=parseInt(knightmov.closest("div").id)-17;
+if(idname<1){
+return;
+}
+if(stopingl2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+function fun4(){
+let idname=parseInt(knightmov.closest("div").id)+17;
+if(idname>64){
+return;
+}
+if(stopingr2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+function fun5(){
+let idname=parseInt(knightmov.closest("div").id)-6;
+if(idname<1){
+return;
+}
+if(stopingr1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+function fun6(){
+let idname=parseInt(knightmov.closest("div").id)+6;
+if(idname>64){
+return;
+}
+if(stopingl1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+function fun7(){
+let idname=parseInt(knightmov.closest("div").id)-15;
+if(idname<1){
+return;
+}
+if(stopingr2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+function fun8(){
+let idname=parseInt(knightmov.closest("div").id)+15;
+if(idname>64){
+return;
+}
+if(stopingl2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("1");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy1();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+fun1();
+fun2();
+fun3();
+fun4();
+fun5();
+fun6();
+fun7();
+fun8();
+}
+
+if(e.target.innerHTML.trim()===""&&knightmov){
+let  stopingl2V;
+if(stopingl2.includes(parseInt(knightmov.closest("div").id))){
+stopingl2V=false;
+
+}
+else{
+ stopingl2V=true;
+
+
+}
+let stopingl1V;
+
+if(stopingl1.includes(parseInt(knightmov.closest("div").id))){
+stopingl1V=false;
+
+}
+else{
+stopingl1V=true;
+
+}
+
+let stopingr1V;
+if(stopingr1.includes(parseInt(knightmov.closest("div").id))){
+ stopingr1V=false;
+
+}
+else{
+stopingr1V=true;
+
+
+}
+
+
+let stopingr2V;
+
+if(stopingr2.includes(parseInt(knightmov.closest("div").id))){
+stopingr2V=false;
+
+}
+else{
+
+
+stopingr2V=true;
+
+}
+
+
+
+
+
+
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-10)&&(parseInt(knightmov.closest("div").id)-10>=1)&&stopingl1V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+6)&&(parseInt(knightmov.closest("div").id)+6<=64)&&stopingl1V)){
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+
+
+
+}
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-6)&&(parseInt(knightmov.closest("div").id)-6>=1)&&stopingr1V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+10)&&(parseInt(knightmov.closest("div").id)+10<=64)&&stopingr1V)){
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-15)&&(parseInt(knightmov.closest("div").id)-15>=1)&&stopingr2V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+15)&&(parseInt(knightmov.closest("div").id)+15<=64)&&stopingl2V)){
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-17)&&(parseInt(knightmov.closest("div").id)-17>=1)&&stopingl2V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+17)&&(parseInt(knightmov.closest("div").id)+17<=64)&&stopingr2V)){
+
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,true);
+white.splice(0,1,false);
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
+catch{}
+
+
+
+
+
+  try{
+
+
+
+
+	           let moving1=document.getElementById("moving1");
+let availablemovl;
+let availablemovr;
+
+	         if(left.includes(parseInt(moving1.closest("div").id))){
+availablemovl=true;
+}
+else{
+
+availablemovl=false;
+
+}
+if(right.includes(parseInt(moving1.closest("div").id))){
+availablemovr=true;
+}
+else{
+availablemovr=false;
+
+}
+
+let baseDiv = moving1.closest("div");
+let targetId = parseInt(baseDiv.id, 10) - 9;
+let targett = document.getElementById(String(targetId));
+let firstChild = targett?.children[0];
+let hasClass1 = firstChild?.className.includes("0");
+let baseDivr = moving1.closest("div");
+let targetIdr= parseInt(baseDivr.id, 10) -7;
+let targettr = document.getElementById(String(targetIdr));
+let firstChildr = targettr?.children[0];
+let hasClass1r = firstChildr?.className.includes("0");
+
+let avm=(parseInt(e.target.id)===(parseInt(moving1.closest("div").id))-8);
+	           let avm1=((parseInt(moving1.closest("div").id))>=49)&& ((parseInt(moving1.closest("div").id))<=56 )&&((parseInt(e.target.id)===(parseInt(moving1.closest("div").id))-16));
+        if(e.target.innerHTML.trim()===""&&(avm||avm1)||(hasClass1&&(parseInt(e.target.closest("div").id)===(parseInt(moving1.closest("div").id))-9))||(hasClass1r&&(parseInt(e.target.closest("div").id)===(parseInt(moving1.closest("div").id))-7))){
+	if(document.getElementById(String(parseInt(moving1.closest("div").id)-8)).innerHTML.trim()!==""&&(e.target==document.getElementById(String(parseInt(moving1.closest("div").id)-8))||e.target==document.getElementById(String(parseInt(moving1.closest("div").id)-16)))){
+return;}   if(e.target.closest("div").id>=1&&e.target.closest("div").id<=8){
+
+if(hasClass1&&(parseInt(e.target.closest("div").id)===(parseInt(moving1.closest("div").id))-9)){
+if(availablemovl){
+
+return;
+}
+ firstChild.id="remo";
+removingpiece();
+ targett.appendChild(moving1);
+idcollection.splice(0,1,targett.closest("div").id);
+}
+
+if(hasClass1r&&(parseInt(e.target.closest("div").id)===(parseInt(moving1.closest("div").id))-7)){
+if(availablemovr){
+return;
+}
+ firstChildr.id="remo";
+removingpiece();
+ targettr.appendChild(moving1);
+idcollection.splice(0,1,targettr.closest("div").id);
+}
+
+
+                        
+document.getElementById("popup1").style.display="block";
+  document.getElementById("board1").style.display="none"; 
+black.splice(0,1,false);
+white.splice(0,1,true);
+                      
+return;
+}
+	           else{
+
+if(hasClass1&&(parseInt(e.target.closest("div").id)===(parseInt(moving1.closest("div").id))-9)){
+if(availablemovl){
+return;
+}
+
+
+ firstChild.id="remo";
+
+removingpiece();
+ targett.appendChild(moving1);
+baseDiv = moving1.closest("div");
+targetId = parseInt(baseDiv.id, 10) - 9;
+ targett = document.getElementById(String(targetId));
+firstChild = targett?.children[0];
+ if(firstChild?.className.includes("king0")){
+firstChild.style.backgroundColor="red";
+}
+
+moving1.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+
+return;
+
+
+}
+
+if(hasClass1r&&(parseInt(e.target.closest("div").id)===(parseInt(moving1.closest("div").id))-7)){
+if(availablemovr){
+return;
+}
+
+
+ firstChildr.id="remo";
+
+removingpiece();
+ targettr.appendChild(moving1);
+baseDivr = moving1.closest("div");
+targetIdr = parseInt(baseDivr.id, 10) -7;
+ targettr = document.getElementById(String(targetIdr));
+firstChildr= targettr?.children[0];
+ if(firstChildr?.className.includes("king0")){
+firstChildr.style.backgroundColor="red";
+}
+
+moving1.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+
+return;
+
+
+}
+
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+
+  e.target.appendChild(moving1);
+
+
+baseDivr = moving1.closest("div");
+targetIdr = parseInt(baseDivr.id, 10) -7;
+ targettr = document.getElementById(String(targetIdr));
+firstChildr= targettr?.children[0];
+baseDiv = moving1.closest("div");
+targetId = parseInt(baseDiv.id, 10) - 9;
+ targett = document.getElementById(String(targetId));
+firstChild = targett?.children[0];
+ if(firstChild?.className.includes("king0")){
+firstChild.style.backgroundColor="red";
+}
+
+ if(firstChildr?.className.includes("king0")){
+firstChildr.style.backgroundColor="red";
+}
+
+
+
+	            moving1.id="";}
+	         }
+	   }
+	    catch{
+                     try{
+                          let rmi=document.getElementById("rmi1");
+let stopingleft=[1,17,25,33,41,49,57];
+let stopingrback=[8,16,24,32,40,48,56,64];
+if(rmi){
+for(let r=1;r<=8;r++){
+let idname=parseInt(rmi.closest("div").id)-(8*r);
+if(idname<1){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<=8;r++){
+let idname=parseInt(rmi.closest("div").id)+(8*r);
+if(idname>64){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(rmi.closest("div").id)-r;
+if(idname<1){
+break;}
+if(stopingleft.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(rmi.closest("div").id)+r;
+if(idname>64){
+break;}
+if(stopingrback.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+
+
+}
+
+                          if(e.target.innerHTML.trim()===""&&rmi){
+                             rm=true;
+                          for(let i=0,j=1;i<9;i++,j++){
+                           if(rmoving[i]<parseInt(e.target.closest("div").id) && parseInt(e.target.closest("div").id)<=rmoving[j] &&rmoving[i]<parseInt(rmi.closest("div").id) && parseInt(rmi.closest("div").id) <=rmoving[j]){
+if(parseInt(e.target.id)<parseInt(rmi.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(rmi.closest("div").id)-k)<=rmoving[i]){
+break;
+}
+if(document.getElementById(String(parseInt(rmi.closest("div").id)-k)).innerHTML.trim()!==""&&parseInt(rmi.closest("div").id)-k>parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(rmi);
+                          rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+                          return;
+}
+if(parseInt(e.target.id)>parseInt(rmi.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(rmi.closest("div").id)+k)>=rmoving[j]){
+break;
+}
+if(document.getElementById(String(parseInt(rmi.closest("div").id)+k)).innerHTML.trim()!==""&&parseInt(rmi.closest("div").id)+k<parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(rmi);
+                          rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+                          return;
+} }
+                      else {
+                       for(let h=1;h<8;h++){
+                       if(parseInt(rmi.closest("div").id)-(8*h)===parseInt(e.target.id)||parseInt(rmi.closest("div").id)+(8*h)===parseInt(e.target.id)){
+                      if(parseInt(e.target.id)<parseInt(rmi.closest("div").id)){
+
+                for(let k=1;k<8;k++){
+if(parseInt(rmi.closest("div").id)-(8*k)<1){
+break;
+}
+else{
+if(document.getElementById(String(parseInt(rmi.closest("div").id)-(8*k))).innerHTML.trim()!==""){
+if(e.target.id<parseInt(rmi.closest("div").id)-(8*k)){
+                return;
+                }}
+}}
+
+e.target.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+break;
+
+}
+                else if(parseInt(e.target.id)>parseInt(rmi.closest("div").id)){ 
+for(let m=1;m<8;m++){
+if(parseInt(rmi.closest("div").id)+(8*m)>64){
+}
+else{
+if(document.getElementById(String(parseInt(rmi.closest("div").id)+(8*m))).innerHTML.trim()!==""){
+if(e.target.id>parseInt(rmi.closest("div").id)+(8*m)){
+                return;
+                }}
+}}
+e.target.appendChild(rmi);
+rmi.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+
+else{}
+} 
+
+} } } } }
+catch{
+}
+}
+/*complete black rook function*/
+
+
+/*black queen*/
+
+
+
+try{
+                          let queenmov=document.getElementById("queenmov1");
+let stopingleft=[1,17,25,33,41,49,57];
+let stopinglback=[17,25,33,41,49,57];
+let stopingright=[64,8,16,24,32,40,48,56];
+let stopingrback=[8,16,24,32,40,48,56,64];
+if(queenmov){
+for(let r=1;r<=8;r++){
+let idname=parseInt(queenmov.closest("div").id)-(8*r);
+if(idname<1){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<=8;r++){
+let idname=parseInt(queenmov.closest("div").id)+(8*r);
+if(idname>64){
+break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(queenmov.closest("div").id)-r;
+if(idname<1){
+break;}
+if(stopingleft.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+
+
+for(let r=1;r<8;r++){
+let idname=parseInt(queenmov.closest("div").id)+r;
+if(idname>64){
+break;}
+if(stopingrback.includes(idname)){break;}
+let straitmov=document.getElementById(String(idname));
+let child_=straitmov.children[0];
+let checkinclude=child_?.className.includes("0");
+if(straitmov.innerHTML.trim()!==""){
+if(parseInt(e.target.closest("div").id)===idname&&checkinclude){
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+straitmov.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;}
+break;}}
+
+
+
+
+
+
+}
+
+if(queenmov){
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)+(7*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+
+if(parseInt(e.target.closest("div").id)===crossmov1&&crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+
+bishopenemy();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}break;
+
+
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)-(7*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)-(9*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+break;
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(queenmov.closest("div").id)+(9*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+
+
+}
+
+                          if(e.target.innerHTML.trim()===""&&queenmov){
+
+                                                       for(let i=0,j=1;i<9;i++,j++){
+                           if(rmoving[i]<parseInt(e.target.closest("div").id) && parseInt(e.target.closest("div").id)<=rmoving[j] &&rmoving[i]<parseInt(queenmov.closest("div").id) && parseInt(queenmov.closest("div").id) <=rmoving[j]){
+if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(queenmov.closest("div").id)-k)<=rmoving[i]){
+break;
+}
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)-k)).innerHTML.trim()!==""&&parseInt(queenmov.closest("div").id)-k>parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(queenmov);
+                          queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+                          return;
+}
+if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){
+for(let k=1;k<8;k++){if((parseInt(queenmov.closest("div").id)+k)>=rmoving[j]){
+break;
+}
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)+k)).innerHTML.trim()!==""&&parseInt(queenmov.closest("div").id)+k<parseInt(e.target.id)){
+return;
+}}
+e.target.appendChild(queenmov);
+                          queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+                          return;
+} }
+                      else {
+                       for(let h=1;h<8;h++){
+                       if(parseInt(queenmov.closest("div").id)-(8*h)===parseInt(e.target.id)||parseInt(queenmov.closest("div").id)+(8*h)===parseInt(e.target.id)){
+                      if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+
+                for(let k=1;k<8;k++){
+if(parseInt(queenmov.closest("div").id)-(8*k)<1){
+break;
+}
+else{
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)-(8*k))).innerHTML.trim()!==""){
+if(e.target.id<parseInt(queenmov.closest("div").id)-(8*k)){
+                return;
+                }}
+}}
+
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+break;
+
+}
+                else if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){ 
+for(let m=1;m<8;m++){
+if(parseInt(queenmov.closest("div").id)+(8*m)>64){
+}
+else{
+if(document.getElementById(String(parseInt(queenmov.closest("div").id)+(8*m))).innerHTML.trim()!==""){
+if(e.target.id>parseInt(queenmov.closest("div").id)+(8*m)){
+                return;
+                }}
+}}
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+
+else{}
+} 
+
+} } }
+
+
+
+
+/*let stopingleft=[1,17,25,33,41,49,57];
+let stopinglback=[17,25,33,41,49,57];
+let stopingright=[64,8,16,24,32,40,48,56];
+let stopingrback=[8,16,24,32,40,48,56,64];*/
+if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)+(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingleft.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)+(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopingleft.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)-(9*k));
+}
+
+if(availablemov.includes(parseInt(e.target.id))){
+
+let checkcorner;
+if(stopinglback.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)-(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopinglback.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)>parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)+(9*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingright.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)+(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopingright.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(queenmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(queenmov.closest("div").id)-(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingrback.includes(parseInt(queenmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(queenmov.closest("div").id)-(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(queenmov);
+queenmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopingrback.includes(crossmov)){
+break;
+}
+}}}
+
+ } }
+catch{}
+
+
+/* black queen complete*/
+
+/* black bishop start*/
+
+try{
+let stopingleft=[1,17,25,33,41,49,57];
+let stopinglback=[17,25,33,41,49,57];
+let stopingright=[64,8,16,24,32,40,48,56];
+let stopingrback=[8,16,24,32,40,48,56,64];
+let bishapmov=document.getElementById("bishapmov1");
+
+
+
+if(bishapmov){
+
+for(let r=1;r<=8;r++){
+
+console.log("hi6");
+
+let crossmov1=parseInt(bishapmov.closest("div").id)+(7*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}break;
+
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(bishapmov.closest("div").id)-(7*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(bishapmov.closest("div").id)-(9*r);
+
+if(crossmov1<1){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+break;
+}
+}
+if(stopingleft.includes(crossmov1)){
+break;
+}
+
+}
+
+
+for(let r=1;r<=8;r++){
+
+let crossmov1=parseInt(bishapmov.closest("div").id)+(9*r);
+
+if(crossmov1>64){
+break;}
+let crossmov2=document.getElementById(String(crossmov1));
+let crossmov3=crossmov2.children[0];
+let crossmov4=crossmov3?.className.includes("0");
+if(crossmov2.innerHTML.trim()!==""){
+if(crossmov4){
+checkenemy.splice(0,1,String(crossmov1));
+if(parseInt(e.target.closest("div").id)===crossmov1){bishopenemy();
+crossmov2.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+}
+break;
+}
+}
+if(stopingrback.includes(crossmov1)){
+break;
+}
+
+}
+
+
+
+
+}
+                         if(e.target.innerHTML.trim()===""&&bishapmov){
+
+
+if(parseInt(e.target.id)>parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)+(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingleft.includes(parseInt(bishapmov.closest("div").id))){
+chec1kcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)+(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+if(document.getElementById(String(crossmov)).children[0].classList.includes("0")){checkenemy.push(String(crossmov));
+if(parseInt(e.target.id)===crossmov){bishopenemy();}
+
+}
+
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopingleft.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)-(9*k));
+}
+
+if(availablemov.includes(parseInt(e.target.id))){
+
+let checkcorner;
+if(stopinglback.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)-(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopinglback.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)>parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)+(9*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingright.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)+(9*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopingright.includes(crossmov)){
+break;
+}
+}}}
+if(parseInt(e.target.id)<parseInt(bishapmov.closest("div").id)){
+for(let i=1;i<8;i++){
+let availablemov=[];
+for(let k=1;k<8;k++){
+availablemov.push(parseInt(bishapmov.closest("div").id)-(7*k));
+}
+if(availablemov.includes(parseInt(e.target.id))){
+let checkcorner;
+if(stopingrback.includes(parseInt(bishapmov.closest("div").id))){
+checkcorner=false;
+}
+else{
+checkcorner=true;
+}
+let crossmov=parseInt(bishapmov.closest("div").id)-(7*i);
+if(document.getElementById(String(crossmov)).innerHTML.trim()!==""){
+return;
+}
+if(parseInt(e.target.closest("div").id)===crossmov&&checkcorner){
+e.target.appendChild(bishapmov);
+bishapmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+}
+if(stopingrback.includes(crossmov)){
+break;
+}
+}}}
+ } }
+catch{}
+
+/*complete black bishop*/
+/*knight start*/
+
+
+
+
+
+try{
+
+
+let stopingl1=[1,9,17,25,33,41,49,57,2,10,18,26,34,42,50,58];
+let stopingl2=[1,9,17,25,33,41,49,57];
+let stopingr1=[8,16,24,32,40,48,56,64,7,15,23,31,39,47,55,63];
+let stopingr2=[8,16,24,32,40,48,56,64];
+
+
+let knightmov=document.getElementById("knightmov1");
+
+
+
+
+
+
+if(knightmov){
+function fun1(){
+let idname=parseInt(knightmov.closest("div").id)-10;
+if(idname<1){
+return;
+}
+if(stopingl1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+
+function fun2(){
+let idname=parseInt(knightmov.closest("div").id)+10;
+if(idname>64){
+return;
+}
+if(stopingr1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+function fun3(){
+let idname=parseInt(knightmov.closest("div").id)-17;
+if(idname<1){
+return;
+}
+if(stopingl2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+function fun4(){
+let idname=parseInt(knightmov.closest("div").id)+17;
+if(idname>64){
+return;
+}
+if(stopingr2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+function fun5(){
+let idname=parseInt(knightmov.closest("div").id)-6;
+if(idname<1){
+return;
+}
+if(stopingr1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+function fun6(){
+let idname=parseInt(knightmov.closest("div").id)+6;
+if(idname>64){
+return;
+}
+if(stopingl1.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+function fun7(){
+let idname=parseInt(knightmov.closest("div").id)-15;
+if(idname<1){
+return;
+}
+if(stopingr2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+function fun8(){
+let idname=parseInt(knightmov.closest("div").id)+15;
+if(idname>64){
+return;
+}
+if(stopingl2.includes(parseInt(knightmov.closest("div").id))){
+
+return;}
+
+let enemy=document.getElementById(String(idname));
+let enemyC=enemy.children[0];
+let checkcundition=enemyC?.className.includes("0");
+if(enemy.innerHTML.trim()!==""&&checkcundition){
+if(e.target.closest("div").id==enemy.id){
+
+
+checkenemy.splice(0,1,String(idname));
+bishopenemy();
+enemy.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+return;
+
+
+}
+
+
+}
+}
+
+
+
+
+
+fun1();
+fun2();
+fun3();
+fun4();
+fun5();
+fun6();
+fun7();
+fun8();
+}
+
+
+
+
+
+
+
+
+
+
+
+if(e.target.innerHTML.trim()===""&&knightmov){
+let  stopingl2V;
+if(stopingl2.includes(parseInt(knightmov.closest("div").id))){
+stopingl2V=false;
+
+}
+else{
+ stopingl2V=true;
+
+
+}
+let stopingl1V;
+
+if(stopingl1.includes(parseInt(knightmov.closest("div").id))){
+stopingl1V=false;
+
+}
+else{
+stopingl1V=true;
+
+}
+
+let stopingr1V;
+if(stopingr1.includes(parseInt(knightmov.closest("div").id))){
+ stopingr1V=false;
+
+}
+else{
+stopingr1V=true;
+
+
+}
+
+
+let stopingr2V;
+
+if(stopingr2.includes(parseInt(knightmov.closest("div").id))){
+stopingr2V=false;
+
+}
+else{
+
+
+stopingr2V=true;
+
+}
+
+
+
+
+
+
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-10)&&(parseInt(knightmov.closest("div").id)-10>=1)&&stopingl1V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+6)&&(parseInt(knightmov.closest("div").id)+6<=64)&&stopingl1V)){
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+
+
+
+}
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-6)&&(parseInt(knightmov.closest("div").id)-6>=1)&&stopingr1V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+10)&&(parseInt(knightmov.closest("div").id)+10<=64)&&stopingr1V)){
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-15)&&(parseInt(knightmov.closest("div").id)-15>=1)&&stopingr2V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+15)&&(parseInt(knightmov.closest("div").id)+15<=64)&&stopingl2V)){
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+if(((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)-17)&&(parseInt(knightmov.closest("div").id)-17>=1)&&stopingl2V)||((parseInt(e.target.id)===parseInt(knightmov.closest("div").id)+17)&&(parseInt(knightmov.closest("div").id)+17<=64)&&stopingr2V)){
+
+e.target.appendChild(knightmov);
+knightmov.id="";
+black.splice(0,1,false);
+white.splice(0,1,true);
+
+return;
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+}
+catch{}
+
+
+/*complete black knight */
+
+
+
+
+ } ); } );
+						
+document.querySelectorAll(".wpon0").forEach((wpon)=>{
+wpon.addEventListener("click",(e)=>{
+if(black[0]){
+return;
+}
+if(document.querySelector(".king0").style.backgroundColor==="green"){
+document.querySelector(".king0").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("moving")){
+e.target.closest("p").id="moving";
+if(document.getElementById("queenmov")){
+queenmov.id="";
+}
+if(document.getElementById("bishapmov")){
+bishapmov.id="";
+}
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+if(document.getElementById("knightmov")){
+knightmov.id="";
+}
+
+if(document.getElementById("rmi")){
+rmi.id="";
+}}
+else{
+let moving=document.getElementById("moving");
+moving.id="";
+e.target.closest("p").id="moving";
+} } ); } );
+
+
+
+
+wpon1s.forEach((wpon)=>{
+wpon.addEventListener("click",(e)=>{
+if(white[0]){
+return;
+}
+if(document.querySelector(".king1").style.backgroundColor==="green"){
+document.querySelector(".king1").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("moving1")){
+e.target.closest("p").id="moving1";
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+}
+if(document.getElementById("bishapmov1")){
+bishapmov1.id="";
+}
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+if(document.getElementById("knightmov1")){
+knightmov1.id="";
+}
+
+if(document.getElementById("rmi1")){
+rmi1.id="";
+}
+
+
+
+
+}
+else{
+let moving=document.getElementById("moving1");
+moving1.id="";
+e.target.closest("p").id="moving1";
+} } ); } );
+
+
+
+
+
+
+
+
+
+document.querySelectorAll(".rock0").forEach((rock)=>{
+
+rock.addEventListener("click",(e)=>{
+
+rookfun();
+ } ); } );
+function rookfun(){
+
+let rocks=document.querySelectorAll(".rock0");
+rocks.forEach((rock)=>{
+
+
+rock.addEventListener("click",(e)=>{
+if(black[0]){
+return;
+}
+if(document.querySelector(".king0").style.backgroundColor==="green"){
+document.querySelector(".king0").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("rmi")){
+e.target.id="rmi";
+if(document.getElementById("queenmov")){
+queenmov.id="";
+}
+if(document.getElementById("knightmov")){
+knightmov.id="";
+}
+
+if(document.getElementById("bishapmov")){
+bishapmov.id="";
+}if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+
+
+if(document.getElementById("moving")){
+moving.id="";
+} }
+else{
+let rmi=document.getElementById("rmi");
+rmi.id="";
+e.target.id="rmi";
+} } ); } );
+}
+
+
+
+
+document.querySelectorAll(".rock1").forEach((rock)=>{
+
+rock.addEventListener("click",(e)=>{
+
+rookfun1();
+ } ); } );
+function rookfun1(){
+let rock1s=document.querySelectorAll(".rock1");
+rock1s.forEach((rock)=>{
+
+rock.addEventListener("click",(e)=>{
+if(white[0]){
+return;
+}
+if(document.querySelector(".king1").style.backgroundColor==="green"){
+document.querySelector(".king1").style.backgroundColor="transparent";
+
+}
+
+
+if(!document.getElementById("rmi1")){
+e.target.id="rmi1";
+
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+}
+
+if(document.getElementById("knightmov1")){
+knightmov1.id="";
+}
+
+if(document.getElementById("bishapmov1")){
+bishapmov1.id="";
+}if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+
+
+if(document.getElementById("moving1")){
+moving1.id="";
+}
+
+
+
+
+
+
+}
+else{
+let rmi1=document.getElementById("rmi1");
+rmi1.id="";
+e.target.id="rmi1";
+} } ); } );
+}
+
+
+
+
+document.querySelectorAll(".queen0").forEach((queen)=>{
+queen.addEventListener("click",(e)=>{
+
+queenfun();
+ } ); } );
+
+
+function queenfun(){
+document.querySelectorAll(".queen0").forEach((queen)=>{
+queen.addEventListener("click",(e)=>{
+if(black[0]){
+return;
+}
+if(document.querySelector(".king0").style.backgroundColor==="green"){
+document.querySelector(".king0").style.backgroundColor="transparent";
+
+}
+
+
+if(!document.getElementById("queenmov")){
+e.target.id="queenmov";
+if(document.getElementById("moving")){
+moving.id="";
+}
+if(document.getElementById("bishapmov")){
+bishapmov.id="";
+}
+if(document.getElementById("knightmov")){
+knightmov.id="";
+}
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+
+ 
+if(document.getElementById("rmi")){
+rmi.id="";
+} }
+else{
+if(document.getElementById("moving")){
+moving.id="";
+} 
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+if(document.getElementById("rmi")){
+rmi.id="";
+} 
+let queenmov=document.getElementById("queenmov");
+queenmov.id="";
+e.target.id="queenmov";
+} 
+ } ); } );
+}
+
+
+
+
+document.querySelectorAll(".queen1").forEach((queen)=>{
+queen.addEventListener("click",(e)=>{
+
+queenfun1();
+ } ); } );
+
+
+function queenfun1(){
+document.querySelectorAll(".queen1").forEach((queen)=>{
+queen.addEventListener("click",(e)=>{
+if(white[0]){
+return;
+}
+if(document.querySelector(".king1").style.backgroundColor==="green"){
+document.querySelector(".king1").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("queenmov1")){
+e.target.id="queenmov1";
+
+if(document.getElementById("moving1")){
+moving1.id="";
+}
+
+if(document.getElementById("bishapmov1")){
+bishapmov1.id="";
+}
+if(document.getElementById("knightmov1")){
+knightmov1.id="";
+}
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+
+ 
+if(document.getElementById("rmi1")){
+rmi1.id="";
+}
+
+
+
+
+
+
+}
+else{
+if(document.getElementById("moving1")){
+moving1.id="";
+} 
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+if(document.getElementById("rmi1")){
+rmi1.id="";
+} 
+
+let queenmov1=document.getElementById("queenmov1");
+queenmov1.id="";
+e.target.id="queenmov1";
+} 
+ } ); } );
+}
+
+
+
+
+
+
+
+document.querySelectorAll(".bishap0").forEach((bishap)=>{
+bishap.addEventListener("click",(e)=>{
+
+bishapfun();
+ } ); } );
+
+
+
+function bishapfun(){
+document.querySelectorAll(".bishap0").forEach((bishap)=>{
+bishap.addEventListener("click",(e)=>{
+if(black[0]){
+return;
+}
+if(document.querySelector(".king0").style.backgroundColor==="green"){
+document.querySelector(".king0").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("bishapmov")){
+e.target.id="bishapmov";
+if(document.getElementById("moving")){
+moving.id="";
+} 
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+if(document.getElementById("queenmov")){
+queenmov.id="";
+} 
+if(document.getElementById("knightmov")){
+knightmov.id="";
+}
+
+
+if(document.getElementById("rmi")){
+rmi.id="";
+} }
+else{
+if(document.getElementById("moving")){
+moving.id="";
+} 
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+if(document.getElementById("rmi")){
+rmi.id="";
+} 
+if(document.getElementById("queenmov")){
+queenmov.id="";
+} 
+
+let bishapmov=document.getElementById("bishapmov");
+bishapmov.id="";
+e.target.id="bishapmov";
+} 
+ } ); } );
+}
+
+
+
+
+
+
+document.querySelectorAll(".bishap1").forEach((bishap)=>{
+bishap.addEventListener("click",(e)=>{
+
+bishapfun1();
+ } ); } );
+
+
+
+function bishapfun1(){
+
+document.querySelectorAll(".bishap1").forEach((bishap)=>{
+bishap.addEventListener("click",(e)=>{
+if(white[0]){
+return;
+}
+if(document.querySelector(".king1").style.backgroundColor==="green"){
+document.querySelector(".king1").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("bishapmov1")){
+e.target.id="bishapmov1";
+
+if(document.getElementById("moving1")){
+moving1.id="";
+} 
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+} 
+if(document.getElementById("knightmov1")){
+knightmov1.id="";
+}
+
+
+if(document.getElementById("rmi1")){
+rmi1.id="";
+}
+
+
+
+
+ }
+else{
+if(document.getElementById("moving1")){
+moving.id="";
+} 
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+if(document.getElementById("rmi1")){
+rmi1.id="";
+} 
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+} 
+
+let bishapmov1=document.getElementById("bishapmov1");
+bishapmov1.id="";
+e.target.id="bishapmov1";
+} 
+ } ); } );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+document.querySelectorAll(".knight0").forEach((knight)=>{
+knight.addEventListener("click",(e)=>{
+
+knightfun();
+ } ); } );
+
+
+
+function knightfun(){
+document.querySelectorAll(".knight0").forEach((knight)=>{
+knight.addEventListener("click",(e)=>{
+if(black[0]){
+return;
+}
+if(document.querySelector(".king0").style.backgroundColor==="green"){
+document.querySelector(".king0").style.backgroundColor="transparent";
+
+}
+
+if(!document.getElementById("knightmov")){
+e.target.id="knightmov";
+if(document.getElementById("moving")){
+moving.id="";
+} 
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+if(document.getElementById("queenmov")){
+queenmov.id="";
+} 
+if(document.getElementById("bishapmov")){
+bishapmov.id="";
+}
+
+
+if(document.getElementById("rmi")){
+rmi.id="";
+} }
+else{
+if(document.getElementById("moving")){
+moving.id="";
+} 
+if(document.getElementById("rmi")){
+rmi.id="";
+} 
+if(document.getElementById("kingmov")){
+kingmov.id="";
+} 
+
+if(document.getElementById("queenmov")){
+queenmov.id="";
+} 
+
+let knightmov=document.getElementById("knightmov");
+knightmov.id="";
+e.target.id="knightmov";
+} 
+ } ); } );
+}
+
+
+
+
+
+
+document.querySelectorAll(".knight1").forEach((knight)=>{
+knight.addEventListener("click",(e)=>{
+
+knightfun1();
+ } ); } );
+
+
+
+function knightfun1(){
+document.querySelectorAll(".knight1").forEach((knight)=>{
+knight.addEventListener("click",(e)=>{
+if(white[0]){
+return;
+}
+if(document.querySelector(".king1").style.backgroundColor==="green"){
+document.querySelector(".king1").style.backgroundColor="transparent";
+
+}
+
+
+if(!document.getElementById("knightmov1")){
+e.target.id="knightmov1";
+
+if(document.getElementById("moving1")){
+moving1.id="";
+} 
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+} 
+if(document.getElementById("bishapmov1")){
+bishapmov1.id="";
+}
+
+
+if(document.getElementById("rmi1")){
+rmi1.id="";
+}
+
+
+
+ }
+else{
+if(document.getElementById("moving1")){
+moving1.id="";
+} 
+if(document.getElementById("kingmov1")){
+kingmov1.id="";
+} 
+
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+} 
+if(document.getElementById("bishapmov1")){
+bishapmov1.id="";
+}
+
+
+if(document.getElementById("rmi1")){
+rmi1.id="";
+}
+
+
+let knightmov1=document.getElementById("knightmov1");
+knightmov1.id="";
+e.target.id="knightmov1";
+} 
+ } ); } );
+}
+
+
+
+
+
+
+let king=document.querySelector(".king0");
+king.addEventListener("click",()=>{
+if(black[0]){
+return;
+}
+
+if(document.getElementById("moving")){
+moving.id="";
+} 
+if(document.getElementById("rmi")){
+rmi.id="";
+} 
+if(document.getElementById("queenmov")){
+queenmov.id="";
+} 
+if(document.getElementById("bishapmov")){
+bishapmov.id="";
+} 
+if(document.getElementById("knightmov")){
+knightmov.id="";
+} 
+
+    king.style.backgroundColor="green";
+
+
+
+king.id="kingmov";
+
+
+
+});
+
+
+
+let king1=document.querySelector(".king1");
+king1.addEventListener("click",()=>{
+if(white[0]){
+return;
+}
+
+if(document.getElementById("moving1")){
+moving1.id="";
+} 
+if(document.getElementById("rmi1")){
+rmi1.id="";
+} 
+if(document.getElementById("queenmov1")){
+queenmov1.id="";
+} 
+if(document.getElementById("bishapmov1")){
+bishapmov1.id="";
+} 
+if(document.getElementById("knightmov1")){
+knightmov1.id="";
+} 
+
+    king1.style.backgroundColor="green";
+
+
+
+
+king1.id="kingmov1";
+
+
+
+});
+
+
+queenfun1();
+rookfun1();
+bishapfun1();
+knightfun1();
+queenfun();
+rookfun();
+bishapfun();
+knightfun();
+</script>
+
+</body>
+</html>
