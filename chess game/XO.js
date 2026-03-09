@@ -91,6 +91,7 @@ function paltu(k, T) {
     }
 }
 resetBtn.addEventListener("click", () => {
+    turn="x";
     
      document.getElementById("instuction").innerText = "";
     document.querySelectorAll('[Event="clickdisable"]').forEach(cell => {
@@ -109,4 +110,5 @@ for (let i = 0; i < 8; i++) {
     })
 }
 ) ;
+
 
